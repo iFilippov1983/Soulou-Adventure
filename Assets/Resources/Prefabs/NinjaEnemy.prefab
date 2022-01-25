@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6637927030915505540}
   - component: {fileID: -113405789543124288}
   m_Layer: 0
-  m_Name: NinjaBoss
+  m_Name: NinjaEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

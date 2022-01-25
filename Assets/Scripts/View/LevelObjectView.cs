@@ -10,5 +10,7 @@ namespace Soulou
         [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private Collider2D _collider2D;
         [SerializeField] private SpriteRenderer _spriteRenderer;
+
+        public SpriteRenderer SpriteRenderer => _spriteRenderer;
     }
 }

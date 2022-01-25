@@ -8,8 +8,8 @@ namespace Soulou
     [CreateAssetMenu(fileName = "SpriteAnimatorData", menuName = "GameData/SpriteAnimatorData")]
     public class SpriteAnimatorData : ScriptableObject
     {
-        [SerializeField] 
-        private List<SpriteSequence> _spriteSequences = new List<SpriteSequence>();
+        [SerializeField]
+        private List<SpriteSequence> _spriteSequences;// = new List<SpriteSequence>();
 
         public List<SpriteSequence> Sequences => _spriteSequences;
 
