@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2a89b8c62853d4fa7c56f3e2200b5e, type: 3}
+  m_Name: PlayerAnimatorData
+  m_EditorClassIdentifier: 
+  _spriteSequences:
+  - state: 0
+    animationSpeed: 10
+    sprites:
+    - {fileID: 184509271508132499, guid: dc4a7ca284eade6429adb9ed92a7cf73, type: 3}
+    - {fileID: -963246791371173594, guid: dc4a7ca284eade6429adb9ed92a7cf73, type: 3}
+  - state: 1
+    animationSpeed: 10
+    sprites:
+    - {fileID: -2909915828673527613, guid: 8359dc3c27a2ddd4e89677f439c65f06, type: 3}
+    - {fileID: 4245140197629447030, guid: 8359dc3c27a2ddd4e89677f439c65f06, type: 3}
+    - {fileID: -1398302610039805520, guid: 8359dc3c27a2ddd4e89677f439c65f06, type: 3}
+    - {fileID: 6674378297322988400, guid: 8359dc3c27a2ddd4e89677f439c65f06, type: 3}
+    - {fileID: -795657320981319981, guid: 8359dc3c27a2ddd4e89677f439c65f06, type: 3}
+    - {fileID: 121104995247723087, guid: 8359dc3c27a2ddd4e89677f439c65f06, type: 3}
+  - state: 2
+    animationSpeed: 10
+    sprites:
+    - {fileID: 4367804079085500029, guid: 91d9d9f0780e2b14dab97d994f1f35f5, type: 3}
+    - {fileID: -7062821007760926457, guid: 91d9d9f0780e2b14dab97d994f1f35f5, type: 3}
+  - state: 3
+    animationSpeed: 10
+    sprites:
+    - {fileID: -7014215007801138651, guid: 0de6e38e91214044584a84000bc24f8f, type: 3}
+    - {fileID: 7842745765641894933, guid: 0de6e38e91214044584a84000bc24f8f, type: 3}
+    - {fileID: 3247003766428825098, guid: 0de6e38e91214044584a84000bc24f8f, type: 3}
+    - {fileID: 6833051562154625089, guid: 0de6e38e91214044584a84000bc24f8f, type: 3}
+    - {fileID: 2683534995374593009, guid: 0de6e38e91214044584a84000bc24f8f, type: 3}
