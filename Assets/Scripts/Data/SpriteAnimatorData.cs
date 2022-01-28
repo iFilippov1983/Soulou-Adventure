@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,15 +8,16 @@ namespace Soulou
     public class SpriteAnimatorData : ScriptableObject
     {
         [SerializeField]
-        private List<SpriteSequence> _spriteSequences;// = new List<SpriteSequence>();
+        private List<SpriteSequence> _spriteSequences;
 
         public List<SpriteSequence> Sequences => _spriteSequences;
 
         [Serializable]
         public sealed class SpriteSequence
         {
-            public AnimationStatePlayer state;
+            public SubjectState state;
             public float animationSpeed;
+            public bool isLooping;
             public List<Sprite> sprites = new List<Sprite>(); 
         }
     }

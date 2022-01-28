@@ -14,12 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteSequences:
   - state: 0
-    animationSpeed: 10
+    animationSpeed: 8
+    isLooping: 1
     sprites:
     - {fileID: 184509271508132499, guid: dc4a7ca284eade6429adb9ed92a7cf73, type: 3}
+    - {fileID: 184509271508132499, guid: dc4a7ca284eade6429adb9ed92a7cf73, type: 3}
     - {fileID: -963246791371173594, guid: dc4a7ca284eade6429adb9ed92a7cf73, type: 3}
-  - state: 1
+    - {fileID: -963246791371173594, guid: dc4a7ca284eade6429adb9ed92a7cf73, type: 3}
+  - state: 2
     animationSpeed: 10
+    isLooping: 1
     sprites:
     - {fileID: -2909915828673527613, guid: 8359dc3c27a2ddd4e89677f439c65f06, type: 3}
     - {fileID: 4245140197629447030, guid: 8359dc3c27a2ddd4e89677f439c65f06, type: 3}
@@ -27,13 +31,15 @@ MonoBehaviour:
     - {fileID: 6674378297322988400, guid: 8359dc3c27a2ddd4e89677f439c65f06, type: 3}
     - {fileID: -795657320981319981, guid: 8359dc3c27a2ddd4e89677f439c65f06, type: 3}
     - {fileID: 121104995247723087, guid: 8359dc3c27a2ddd4e89677f439c65f06, type: 3}
-  - state: 2
-    animationSpeed: 10
+  - state: 3
+    animationSpeed: 3
+    isLooping: 1
     sprites:
     - {fileID: 4367804079085500029, guid: 91d9d9f0780e2b14dab97d994f1f35f5, type: 3}
     - {fileID: -7062821007760926457, guid: 91d9d9f0780e2b14dab97d994f1f35f5, type: 3}
-  - state: 3
+  - state: 4
     animationSpeed: 10
+    isLooping: 1
     sprites:
     - {fileID: -7014215007801138651, guid: 0de6e38e91214044584a84000bc24f8f, type: 3}
     - {fileID: 7842745765641894933, guid: 0de6e38e91214044584a84000bc24f8f, type: 3}
