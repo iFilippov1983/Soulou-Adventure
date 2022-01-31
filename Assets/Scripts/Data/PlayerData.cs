@@ -15,6 +15,7 @@ namespace Soulou
         [SerializeField] private float _jumpStrength = 1f;
         [Header("Equals to MainObject position")]
         [SerializeField] private Vector3 _playerStartPosition;
+        [SerializeField] private Vector2 _finishPosition;
 
         private GameObject _playerPrefab;
         private SpriteAnimatorData _playeAnimatorData;
@@ -24,7 +25,7 @@ namespace Soulou
             get
             {
                 if (_playerPrefab == null) _playerPrefab = 
-                        Resources.Load<GameObject>(string.Concat(Path.PrefabsFolderPath, _playerPrefabPath));
+                        Resources.Load<GameObject>(string.Concat(PathString.PrefabsFolderPath, _playerPrefabPath));
                 return _playerPrefab;
             }
         }
@@ -34,7 +35,7 @@ namespace Soulou
             get
             {
                 if (_playeAnimatorData == null) _playeAnimatorData =
-                             Resources.Load<SpriteAnimatorData>(string.Concat(Path.GameDataFolderPath, _playerAnimatorDataPath));
+                             Resources.Load<SpriteAnimatorData>(string.Concat(PathString.GameDataFolderPath, _playerAnimatorDataPath));
                 return _playeAnimatorData;
             }
         }
@@ -42,6 +43,7 @@ namespace Soulou
         public float MovementSpeed => _moveSpeed;
         public float JumpStrength => _jumpStrength;
         public Vector3 StartPosition => _playerStartPosition;
+        public Vector2 FinishPosition => _finishPosition;
 
         public Action OnAmmoSwitched;
     }

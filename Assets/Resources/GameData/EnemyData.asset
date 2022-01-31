@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18cff521c2be1fa4eb1871933999e57f, type: 3}
-  m_Name: GameData
+  m_Script: {fileID: 11500000, guid: c0077cb32e2381846985dbdb323ae47f, type: 3}
+  m_Name: EnemyData
   m_EditorClassIdentifier: 
-  _playerDataPath: PlayerData
-  _enemyDataPath: EnemyData
-  _gameProgressDataPath: GameProgressData
+  _enemyPrefabPath: RollingMonster
+  _minSpawnTime: 1
+  _maxSpawnTime: 2
+  _amountOnLevel: 15
+  _spawnPoint: {x: -14, y: 10, z: 0}

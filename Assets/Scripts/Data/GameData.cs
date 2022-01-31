@@ -9,18 +9,40 @@ namespace Soulou
     public class GameData : ScriptableObject
     {
         [SerializeField] private string _playerDataPath;
-        [SerializeField] private string _sceneDataPath;
+        [SerializeField] private string _enemyDataPath;
         [SerializeField] private string _gameProgressDataPath;
 
         private PlayerData _playerData;
+        private EnemyData _enemyData;
+        private GameProgressData _gameProgressData;
 
         public PlayerData PlayerData
         {
             get 
             {
                 if (_playerData == null) _playerData = LoadPath<PlayerData>
-                        (string.Concat(Path.GameDataFolderPath, _playerDataPath));
+                        (string.Concat(PathString.GameDataFolderPath, _playerDataPath));
                 return _playerData;
+            }
+        }
+
+        public EnemyData EnemyData
+        {
+            get
+            {
+                if (_enemyData == null) _enemyData = LoadPath<EnemyData>
+                         (string.Concat(PathString.GameDataFolderPath, _enemyDataPath));
+                return _enemyData;
+            }
+        }
+
+        public GameProgressData GameProgressData
+        {
+            get
+            {
+                if (_gameProgressData == null) _gameProgressData = LoadPath<GameProgressData>
+                        (string.Concat(PathString.GameDataFolderPath, _gameProgressDataPath));
+                return _gameProgressData;
             }
         }
 

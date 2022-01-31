@@ -4,13 +4,14 @@ namespace Soulou
 {
     public class PlayerAnimator
     {
-        private LevelObjectModel _playerModel;
+        private LevelObjectViewModel _playerModel;
         private SpriteAnimatorController _spriteAnimator;
         private SpriteAnimatorData _spriteAnimatorData;
         private float _currentAnimationSpeed;
         private bool _isLoooping;
+        private bool _isNotPaused = true;
 
-        public PlayerAnimator(LevelObjectModel playerModel)
+        public PlayerAnimator(LevelObjectViewModel playerModel)
         {
             _playerModel = playerModel;
             var playerData = _playerModel.objectData as PlayerData;
@@ -20,21 +21,36 @@ namespace Soulou
 
         public void Execute()
         {
-            _spriteAnimator.Execute();
+            if(_isNotPaused) _spriteAnimator.Execute();
         }
 
         public void SetNewAnimation()
         {
             SetAnimationProperties();
-            //_spriteAnimator.StopAnimation(_playerModel.spriteRenderer);
-            _spriteAnimator.StartAnimation(_playerModel.spriteRenderer, _playerModel.state, _isLoooping, _currentAnimationSpeed);
+            _spriteAnimator.StartAnimation
+                (
+                _playerModel.spriteRenderer, 
+                _playerModel.state, 
+                _isLoooping, 
+                _currentAnimationSpeed
+                );
+        }
+
+        public void PauseAnimation()
+        {
+            _isNotPaused = false;
+        }
+
+        public void UnpauseAnimation()
+        {
+            _isNotPaused = true;
         }
 
         private void SetAnimationProperties()
         {
             foreach (SpriteSequence ss in _spriteAnimatorData.Sequences)
             {
-                if (ss.state == _playerModel.state)
+                if (ss.state.Equals(_playerModel.state))
                 {
                     _currentAnimationSpeed = ss.animationSpeed;
                     _isLoooping = ss.isLooping;

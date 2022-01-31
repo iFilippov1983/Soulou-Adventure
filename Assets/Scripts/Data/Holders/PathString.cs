@@ -1,6 +1,6 @@
 ﻿namespace Soulou
 {
-    public static class Path
+    public static class PathString
     {
         public const string GameDataFolderPath = "GameData/";
         public const string PrefabsFolderPath = "Prefabs/";

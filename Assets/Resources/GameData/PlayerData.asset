@@ -17,3 +17,4 @@ MonoBehaviour:
   _moveSpeed: 3
   _jumpStrength: 7
   _playerStartPosition: {x: 12, y: -7, z: 0}
+  _finishPosition: {x: 11.55, y: 8.5}

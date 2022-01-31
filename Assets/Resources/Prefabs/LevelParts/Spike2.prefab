@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4921286713057606719}
   m_Layer: 8
   m_Name: Spike2
-  m_TagString: Untagged
+  m_TagString: DeadlyObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

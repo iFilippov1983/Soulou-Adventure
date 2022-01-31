@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2633246290246502025}
   - component: {fileID: 9183964519635781371}
   - component: {fileID: 1946706131662024014}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NinjaSoulou
   m_TagString: Player
   m_Icon: {fileID: 0}

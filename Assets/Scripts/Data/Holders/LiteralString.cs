@@ -5,15 +5,13 @@
         //Tags
         public const string Default = "Default";
         public const string Player = "Player";
-        public const string Ammo = "Ammo";
-
-        //Names
-        public const string Gun = "Gun";
-        public const string FoV = "FoV";
+        public const string DeadlyObject = "DeadlyObject";
 
         //Layers masks
         public const string Mask_Default = "Default";
         public const string Mask_Ground = "Ground";
         public const string Mask_Ladder = "Ladder";
+        public const string Mask_Finish = "Finish";
+        public const string Mask_Player = "Player";
     }
 }

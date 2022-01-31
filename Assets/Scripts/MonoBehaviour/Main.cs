@@ -7,12 +7,14 @@ namespace Soulou
 
         [SerializeField] private GameData _gameData;
         private ControllersDepo _controllers;
+        private GameInitializer _gameInitializer;
 
         private void Awake()
         {
+            DontDestroyOnLoad(gameObject);
             _controllers = new ControllersDepo();
-            new GameInitializer(_controllers, _gameData);
-
+            _gameInitializer = new GameInitializer(_controllers, _gameData);
+            _gameInitializer.Configure();
             _controllers.Configure();
         }
 
@@ -38,6 +40,7 @@ namespace Soulou
 
         private void OnDestroy()
         {
+            _gameInitializer.Cleanup();
             _controllers.Cleanup();
         }
     }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6637927030915505541}
   - component: {fileID: 6637927030915505540}
   - component: {fileID: -113405789543124288}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: NinjaEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Soulou 
 {
-    public class LevelObjectModel
+    public class LevelObjectViewModel
     {
         public Transform transform;
         public Rigidbody2D rigidbody2D;

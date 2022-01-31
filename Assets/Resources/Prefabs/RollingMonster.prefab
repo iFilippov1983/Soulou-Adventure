@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 709590538181242360}
   - component: {fileID: 1739671155356541481}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bl-1-wingRHorn1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4367847882216820561}
   - component: {fileID: 8119049245628216729}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bl-1-wingRHorn3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7849475422983094559}
   - component: {fileID: 7352684296243458712}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bl-1-hornL (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,12 +255,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1232249896435230395}
+  - component: {fileID: -2339915423084404266}
   - component: {fileID: 1265083434373595543}
   - component: {fileID: 1329022728523379370}
   - component: {fileID: 3654434768938425271}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RollingMonster
-  m_TagString: Untagged
+  m_TagString: DeadlyObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -294,6 +295,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-2339915423084404266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2229594319442213602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b589e1992ea96724aa43d7044bf535db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 1.5
 --- !u!212 &1265083434373595543
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -392,7 +406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4558954454011363895}
   - component: {fileID: 9161386990933203857}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bl-1-hornL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +488,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7481423973192969090}
   - component: {fileID: 3193926931517800794}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bl-1-hornR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -556,7 +570,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1768011532314481064}
   - component: {fileID: 3068569411557335586}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bl-1-hornL (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -638,7 +652,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5137941811795647929}
   - component: {fileID: 1552013032488218945}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bl-1-hornL (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,7 +734,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1141664167573809723}
   - component: {fileID: 6507862595205983402}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bl-1-wingLHorn1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -802,7 +816,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8519291553568982209}
   - component: {fileID: 5701709649162265680}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bl-1-feather
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -884,7 +898,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7612855878951307336}
   - component: {fileID: 5554241368736286432}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bl-1-hornR (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -966,7 +980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6343903999068191234}
   - component: {fileID: 934567424346491432}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bl-1-hornR (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1048,7 +1062,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8183074364381221649}
   - component: {fileID: 7238135212406964901}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bl-1-wingRHorn3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1130,7 +1144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5067259528112626223}
   - component: {fileID: 7487636331915460558}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bl-1-eyeN1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1212,7 +1226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5219834065063531009}
   - component: {fileID: 1156349666445668988}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bl-1-hornL (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1294,7 +1308,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2280306736410024681}
   - component: {fileID: 4335391909080648630}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bl-1-hornR (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

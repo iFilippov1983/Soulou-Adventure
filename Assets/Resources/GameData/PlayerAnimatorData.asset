@@ -46,3 +46,15 @@ MonoBehaviour:
     - {fileID: 3247003766428825098, guid: 0de6e38e91214044584a84000bc24f8f, type: 3}
     - {fileID: 6833051562154625089, guid: 0de6e38e91214044584a84000bc24f8f, type: 3}
     - {fileID: 2683534995374593009, guid: 0de6e38e91214044584a84000bc24f8f, type: 3}
+  - state: 7
+    animationSpeed: 5
+    isLooping: 0
+    sprites:
+    - {fileID: -8558356536283003586, guid: b6b08fb26a056dc4b87e463ab8cbd221, type: 3}
+    - {fileID: 6848963583671020832, guid: b6b08fb26a056dc4b87e463ab8cbd221, type: 3}
+    - {fileID: -4240390192037888099, guid: b6b08fb26a056dc4b87e463ab8cbd221, type: 3}
+    - {fileID: -1173941590877989468, guid: b6b08fb26a056dc4b87e463ab8cbd221, type: 3}
+    - {fileID: 3184918476935429167, guid: b6b08fb26a056dc4b87e463ab8cbd221, type: 3}
+    - {fileID: 8143449668034236206, guid: b6b08fb26a056dc4b87e463ab8cbd221, type: 3}
+    - {fileID: -1142858426014712639, guid: b6b08fb26a056dc4b87e463ab8cbd221, type: 3}
+    - {fileID: -3423214783247712270, guid: b6b08fb26a056dc4b87e463ab8cbd221, type: 3}
