@@ -16,5 +16,5 @@ MonoBehaviour:
   _playerAnimatorDataPath: PlayerAnimatorData
   _moveSpeed: 3
   _jumpStrength: 7
-  _playerStartPosition: {x: 12, y: -7, z: 0}
+  _playerStartPosition: {x: 12, y: -7}
   _finishPosition: {x: 11.55, y: 8.5}

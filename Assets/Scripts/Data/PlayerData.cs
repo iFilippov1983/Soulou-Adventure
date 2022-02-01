@@ -14,7 +14,7 @@ namespace Soulou
         [SerializeField] private float _moveSpeed = 1f;
         [SerializeField] private float _jumpStrength = 1f;
         [Header("Equals to MainObject position")]
-        [SerializeField] private Vector3 _playerStartPosition;
+        [SerializeField] private Vector2 _playerStartPosition;
         [SerializeField] private Vector2 _finishPosition;
 
         private GameObject _playerPrefab;
@@ -45,7 +45,11 @@ namespace Soulou
         public Vector3 StartPosition => _playerStartPosition;
         public Vector2 FinishPosition => _finishPosition;
 
-        public Action OnAmmoSwitched;
+        public void SetNewPositions(Vector2 startPosition, Vector2 finishPosition)
+        {
+            _playerStartPosition = startPosition;
+            _finishPosition = finishPosition;
+        }
     }
 }
 

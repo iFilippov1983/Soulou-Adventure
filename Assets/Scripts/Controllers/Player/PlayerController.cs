@@ -7,9 +7,8 @@ namespace Soulou
 {
     public sealed class PlayerController : IInitialization, IFixedExecute, IExecute, ICleanup
     {
-        private LevelObjectViewModel _playerModel;
+        private LevelObjectView _playerView;
         private Rigidbody2D _playerRB;
-        private Vector2 _finish;
         private Vector2 _moveDirection;
         private PlayerAnimator _animator;
         private Coroutine _deathPause;
@@ -37,13 +36,12 @@ namespace Soulou
         public Action OnFinishEnter;
         public Action OnPlayerDeath;
 
-        public PlayerController(GameData gameData, LevelObjectViewModel playerModel, InputInitializer inputInitializer)
+        public PlayerController(GameData gameData, LevelObjectView playerView, InputInitializer inputInitializer)
         {
-            _playerModel = playerModel;
-            _playerRB = _playerModel.rigidbody2D;
+            _playerView = playerView;
+            _playerRB = _playerView.Rigidbody2D;
             _moveSpeed = gameData.PlayerData.MovementSpeed;
             _jumpStrength = gameData.PlayerData.JumpStrength;
-            _finish = gameData.PlayerData.FinishPosition;
 
             _horizontalMovement = inputInitializer.GetInput().inputHorizontal;
             _verticalMovement = inputInitializer.GetInput().inputVertical;
@@ -53,14 +51,15 @@ namespace Soulou
         public void Initialize()
         {
             _checkResults = new Collider2D[_resultsMaxAmount];
-            _animator = new PlayerAnimator(_playerModel);
-            _playerModel.state = SubjectState.Idle;
+            _animator = new PlayerAnimator(_playerView);
             _animator.SetNewAnimation();
 
-            _checkSize = _playerModel.collider2D.bounds.size;
+            _checkSize = _playerView.Collider2D.bounds.size;
             _checkSize.y += _ySizeCorrection;
             _checkSize.x /= _xSizeCorrection;
 
+            _playerView.DeadlyObjectContactEvent += OnPlayerHit;
+            _playerView.FinishEnterEvent += OnPlayerFinishEnter;
             _horizontalMovement.OnAxisChange += OnHorizontalAxisChange;
             _verticalMovement.OnAxisChange += OnVerticalAxisChange;
             _jumpMovement.OnAxisChange += OnJump;
@@ -73,7 +72,7 @@ namespace Soulou
 
         public void Execute(float deltaTime)
         {
-            if (!_playerModel.state.Equals(SubjectState.Death))
+            if (!_playerView.State.Equals(SubjectState.Death))
             {
                 CheckCollision();
                 HandleMoving();
@@ -84,6 +83,8 @@ namespace Soulou
 
         public void Cleanup()
         {
+            _playerView.DeadlyObjectContactEvent -= OnPlayerHit;
+            _playerView.FinishEnterEvent -= OnPlayerFinishEnter;
             _horizontalMovement.OnAxisChange -= OnHorizontalAxisChange;
             _verticalMovement.OnAxisChange -= OnVerticalAxisChange;
             _jumpMovement.OnAxisChange -= OnJump;
@@ -98,7 +99,8 @@ namespace Soulou
         {
             _isGrounded = false;
             _isClimbing = false;
-            int amount = Physics2D.OverlapBoxNonAlloc(_playerModel.transform.position, _checkSize, 0f, _checkResults);
+
+            int amount = Physics2D.OverlapBoxNonAlloc(_playerView.transform.position, _checkSize, 0f, _checkResults);
 
             for (int index = 0; index < amount; index++)
             {
@@ -106,19 +108,12 @@ namespace Soulou
                 if (_hitObject.layer.Equals(LayerMask.NameToLayer(LiteralString.Mask_Ground)))
                 {
                     _isGrounded = _hitObject.transform.position.y < (_playerRB.transform.position.y - _checkPointCorrection);
-                    Physics2D.IgnoreCollision(_playerModel.collider2D, _checkResults[index], !_isGrounded);
+                    Physics2D.IgnoreCollision(_playerView.Collider2D, _checkResults[index], !_isGrounded);
                 }
                 else if (_hitObject.layer.Equals(LayerMask.NameToLayer(LiteralString.Mask_Ladder)))
                 {
                     _isClimbing = true;
                 }
-            }
-
-            var finish = _playerModel.collider2D.OverlapPoint(_finish);
-            if (finish)
-            {
-                _playerRB.gameObject.SetActive(false);
-                OnFinishEnter?.Invoke();
             }
         }
 
@@ -126,26 +121,28 @@ namespace Soulou
         {
             if (_isClimbing && !_isGrounded)
             {
-                _playerModel.state = SubjectState.Climb;
+                _playerView.State = SubjectState.Climb;
                 _animator.SetNewAnimation();
                 if (_moveDirection.y == 0) _animator.PauseAnimation();
                 else _animator.UnpauseAnimation();
             }
             else if (_moveDirection.x == 0 && _isGrounded)
             {
-                _playerModel.state = SubjectState.Idle;
+                _playerView.State = SubjectState.Idle;
                 _animator.SetNewAnimation();
             }
             else if (_moveDirection.x != 0 && _isGrounded)
             {
-                _playerModel.state = SubjectState.Run;
+                _animator.UnpauseAnimation();
+                _playerView.State = SubjectState.Run;
                 _animator.SetNewAnimation();
             }
             else if (!_isGrounded)
             {
-                _playerModel.state = SubjectState.Jump;
+                _playerView.State = SubjectState.Jump;
                 _animator.SetNewAnimation();
             }
+            
         }
 
         private void HandleMoving()
@@ -180,6 +177,30 @@ namespace Soulou
             } 
         }
 
+        private void DesactivatePlayer()
+        {
+            _playerView.State = SubjectState.Death;
+            _animator.SetNewAnimation();
+
+            _playerView.Collider2D.enabled = false;
+            _moveDirection = Vector2.zero;
+            _playerRB.constraints = RigidbodyConstraints2D.FreezeAll;
+
+            _deathPause = CoroutinesController.StartRoutine(WaitForAnimationEnd());
+        }
+
+        private IEnumerator WaitForAnimationEnd()
+        {
+            yield return new WaitForSeconds(1f);
+
+            _playerView.Collider2D.enabled = true;
+            _playerRB.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+            OnPlayerDeath?.Invoke();
+            CoroutinesController.StopRoutine(_deathPause);
+        }
+
+
         private void OnVerticalAxisChange(float value)
         {
             _vertical = value;
@@ -195,27 +216,9 @@ namespace Soulou
             _jump = value;
         }
 
-        private IEnumerator WaitForAnimationEnd()
+        private void OnPlayerFinishEnter()
         {
-            yield return new WaitForSeconds(2f);
-            DisablePlayer();
-            OnPlayerDeath?.Invoke();
-        }
-
-        private void DesactivatePlayer()
-        {
-            _playerModel.state = SubjectState.Death;
-            _animator.SetNewAnimation();
-            _playerModel.collider2D.enabled = false;
-            _playerRB.velocity = Vector3.zero;
-            _deathPause = CoroutinesController.StartRoutine(WaitForAnimationEnd());
-        }
-
-        private void DisablePlayer()
-        {
-            CoroutinesController.StopRoutine(_deathPause);
-            _playerModel.collider2D.enabled = true;
-            _playerRB.gameObject.SetActive(false);
+            OnFinishEnter?.Invoke();
         }
     }
 }

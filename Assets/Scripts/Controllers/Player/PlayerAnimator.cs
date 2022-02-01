@@ -1,20 +1,21 @@
+using UnityEngine;
 using static Soulou.SpriteAnimatorData;
 
 namespace Soulou
 {
     public class PlayerAnimator
     {
-        private LevelObjectViewModel _playerModel;
+        private LevelObjectView _playerView;
         private SpriteAnimatorController _spriteAnimator;
         private SpriteAnimatorData _spriteAnimatorData;
         private float _currentAnimationSpeed;
         private bool _isLoooping;
         private bool _isNotPaused = true;
 
-        public PlayerAnimator(LevelObjectViewModel playerModel)
+        public PlayerAnimator(LevelObjectView playerView)
         {
-            _playerModel = playerModel;
-            var playerData = _playerModel.objectData as PlayerData;
+            _playerView = playerView;
+            var playerData = _playerView.ObjectData as PlayerData;
             _spriteAnimatorData = playerData.SpriteAnimatorData;
             _spriteAnimator = new SpriteAnimatorController(_spriteAnimatorData);
         }
@@ -29,8 +30,8 @@ namespace Soulou
             SetAnimationProperties();
             _spriteAnimator.StartAnimation
                 (
-                _playerModel.spriteRenderer, 
-                _playerModel.state, 
+                _playerView.SpriteRenderer, 
+                _playerView.State, 
                 _isLoooping, 
                 _currentAnimationSpeed
                 );
@@ -50,7 +51,7 @@ namespace Soulou
         {
             foreach (SpriteSequence ss in _spriteAnimatorData.Sequences)
             {
-                if (ss.state.Equals(_playerModel.state))
+                if (ss.state.Equals(_playerView.State))
                 {
                     _currentAnimationSpeed = ss.animationSpeed;
                     _isLoooping = ss.isLooping;

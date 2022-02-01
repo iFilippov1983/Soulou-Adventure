@@ -9,8 +9,6 @@ namespace Soulou
 {
     public class EnemyRollingController : IInitialization, IExecute, ICleanup
     {
-        LevelObjectViewModel _playerModel;
-
         private GameObject _enemyPrefab;
         private float _minSpawnTime;
         private float _maxSpawnTime;

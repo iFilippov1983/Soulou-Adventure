@@ -1,16 +1,23 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Soulou
 {
     public class GameProgressController : IInitialization
     {
+        private const string SCORES = "Scores: ";
         private GameProgressData _progressData;
+        private PlayerData _playerData;
         private PlayerInitializer _playerInitializer;
-        private int _lives;
         private int _scores;
         private int _currentLevel;
         private int _scoresForCompleteLevel;
+        private int _penaltyScores;
+        private Text _scoresText;
+
+        public Action<int> ScoresChanged; 
 
         public GameProgressController(GameData gameData, PlayerInitializer playerInitializer)
         {
@@ -20,55 +27,52 @@ namespace Soulou
 
         public void Initialize()
         {
-            //NewGame();
+            _scoresText = UnityEngine.Object.FindObjectOfType<Text>();
+            NewGame();
         }
 
         public void LevelComplete()
         {
             _scores += _scoresForCompleteLevel;
-            _currentLevel++;
-            if (_currentLevel < SceneManager.sceneCountInBuildSettings)
-            {
-                LoadLevel(_currentLevel);
-            }
-            else
-            {
-                _currentLevel = 1;
-                LoadLevel(_currentLevel);
-            }
-            
+            _scoresText.text = string.Concat(SCORES, _scores);
+            ScoresChanged?.Invoke(_scores);
+            Debug.Log("LEVEL COMPLETE!");
         }
 
         public void LevelFailed()
         {
-            _lives--;
-
-            Debug.Log(_lives);
-
-            if (_lives <= 0)
-            {
-                NewGame();
-            }
-            else 
-            {
-                LoadLevel(_currentLevel);
-            }
+            _scores -= _penaltyScores;
+            _scoresText.text = string.Concat(SCORES, _scores);
+            ScoresChanged?.Invoke(_scores);
+            if (_scores <= 0) GameOver();
         }
 
         private void NewGame()
         {
-            _lives = _progressData.Lives;
-            _scores = _progressData.Scores;
-            _currentLevel = _progressData.CurrentLevel;
-            _scoresForCompleteLevel = _progressData.ScoresForCompleteLevel;
+            _scores = _progressData.ScoresOnStart;
+            _scoresText.text = string.Concat(SCORES, _scores);
 
-            LoadLevel(_currentLevel);
+            _currentLevel = _progressData.CurrentLevel;
+            _penaltyScores = _progressData.PenaltyScores;
+            ScoresChanged?.Invoke(_scores);
+
+            LoadLevel();
         }
 
-        private void LoadLevel(int levelIndex)
+        private void LoadLevel()
         {
-            SceneManager.LoadScene(levelIndex);
-            _playerInitializer.InitPlayer();
+
+        }
+
+        private void InitializeNewLevel()
+        {
+            _scores = _progressData.ScoresOnStart;
+            _currentLevel = _progressData.CurrentLevel;
+        }
+
+        private void GameOver()
+        {
+            Debug.Log("GAME OVER!");
         }
     }
 }

@@ -47,7 +47,7 @@ MonoBehaviour:
     - {fileID: 6833051562154625089, guid: 0de6e38e91214044584a84000bc24f8f, type: 3}
     - {fileID: 2683534995374593009, guid: 0de6e38e91214044584a84000bc24f8f, type: 3}
   - state: 7
-    animationSpeed: 5
+    animationSpeed: 10
     isLooping: 0
     sprites:
     - {fileID: -8558356536283003586, guid: b6b08fb26a056dc4b87e463ab8cbd221, type: 3}
@@ -58,3 +58,12 @@ MonoBehaviour:
     - {fileID: 8143449668034236206, guid: b6b08fb26a056dc4b87e463ab8cbd221, type: 3}
     - {fileID: -1142858426014712639, guid: b6b08fb26a056dc4b87e463ab8cbd221, type: 3}
     - {fileID: -3423214783247712270, guid: b6b08fb26a056dc4b87e463ab8cbd221, type: 3}
+  - state: 5
+    animationSpeed: 10
+    isLooping: 0
+    sprites:
+    - {fileID: -4816794554058006366, guid: db07fbd63ff6488469a5b601f1613881, type: 3}
+    - {fileID: -7413088853120346135, guid: db07fbd63ff6488469a5b601f1613881, type: 3}
+    - {fileID: -4063324764847601422, guid: db07fbd63ff6488469a5b601f1613881, type: 3}
+    - {fileID: -6615676328723750131, guid: db07fbd63ff6488469a5b601f1613881, type: 3}
+    - {fileID: 4478691688855718845, guid: db07fbd63ff6488469a5b601f1613881, type: 3}
