@@ -35,6 +35,7 @@ namespace Soulou
 
         public Action OnFinishEnter;
         public Action OnPlayerDeath;
+        public Action<Transform> OnMove;
 
         public PlayerController(GameData gameData, LevelObjectView playerView, InputInitializer inputInitializer)
         {
@@ -58,8 +59,8 @@ namespace Soulou
             _checkSize.y += _ySizeCorrection;
             _checkSize.x /= _xSizeCorrection;
 
-            _playerView.DeadlyObjectContactEvent += OnPlayerHit;
-            _playerView.FinishEnterEvent += OnPlayerFinishEnter;
+            _playerView.CollisionEnterEvent += CollisionEnter;
+            _playerView.TriggerEnterEvent += TriggerEnter;
             _horizontalMovement.OnAxisChange += OnHorizontalAxisChange;
             _verticalMovement.OnAxisChange += OnVerticalAxisChange;
             _jumpMovement.OnAxisChange += OnJump;
@@ -68,6 +69,7 @@ namespace Soulou
         public void FixedExecute()
         {
             _playerRB.MovePosition(_playerRB.position + _moveDirection * Time.fixedDeltaTime);
+            OnMove?.Invoke(_playerRB.transform);
         }
 
         public void Execute(float deltaTime)
@@ -83,16 +85,31 @@ namespace Soulou
 
         public void Cleanup()
         {
-            _playerView.DeadlyObjectContactEvent -= OnPlayerHit;
-            _playerView.FinishEnterEvent -= OnPlayerFinishEnter;
+            _playerView.CollisionEnterEvent -= CollisionEnter;
+            _playerView.TriggerEnterEvent -= TriggerEnter;
             _horizontalMovement.OnAxisChange -= OnHorizontalAxisChange;
             _verticalMovement.OnAxisChange -= OnVerticalAxisChange;
             _jumpMovement.OnAxisChange -= OnJump;
         }
 
-        public void OnPlayerHit()
+        private void CollisionEnter(Collision2D collision)
         {
-            DesactivatePlayer();
+            if (collision.gameObject.tag.Equals(LiteralString.DeadlyObject))
+            {
+                DesactivatePlayer();
+            }
+        }
+
+        private void TriggerEnter(Collider2D collision)
+        {
+            if (collision.gameObject.tag.Equals(LiteralString.Finish))
+            {
+                OnFinishEnter?.Invoke();
+            }
+            if (collision.gameObject.tag.Equals(LiteralString.DeadlyObject))
+            {
+                DesactivatePlayer();
+            }
         }
 
         private void CheckCollision()
@@ -214,11 +231,6 @@ namespace Soulou
         private void OnJump(float value)
         {
             _jump = value;
-        }
-
-        private void OnPlayerFinishEnter()
-        {
-            OnFinishEnter?.Invoke();
         }
     }
 }

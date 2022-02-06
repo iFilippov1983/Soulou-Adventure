@@ -20,8 +20,8 @@ namespace Soulou
         public ScriptableObject ObjectData { get { return _objectData; } set { _objectData = value; } }
         public SubjectState State { get { return _state; } set { _state = value; } }
 
-        public Action FinishEnterEvent;
-        public Action DeadlyObjectContactEvent;
+        public Action<Collision2D> CollisionEnterEvent;
+        public Action<Collider2D> TriggerEnterEvent;
 
         private void Awake()
         {
@@ -34,19 +34,12 @@ namespace Soulou
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-
+            CollisionEnterEvent?.Invoke(collision);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.tag.Equals(LiteralString.Finish))
-            {
-                FinishEnterEvent?.Invoke();
-            }
-            else if (collision.gameObject.tag.Equals(LiteralString.DeadlyObject))
-            {
-                DeadlyObjectContactEvent?.Invoke();
-            }
+            TriggerEnterEvent?.Invoke(collision);
         }
     }
 }

@@ -515,14 +515,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2246434003188526378, guid: 2ae8e412d60d5dc4eb6a7783644f32ac, type: 3}
-      propertyPath: m_TagString
-      value: Finish
-      objectReference: {fileID: 0}
-    - target: {fileID: 7828601197563310413, guid: 2ae8e412d60d5dc4eb6a7783644f32ac, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8018102795524573265, guid: 2ae8e412d60d5dc4eb6a7783644f32ac, type: 3}
       propertyPath: m_Name
       value: Level_1

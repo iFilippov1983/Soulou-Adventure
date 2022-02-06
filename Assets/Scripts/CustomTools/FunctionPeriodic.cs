@@ -17,7 +17,8 @@ namespace CustomUtilities
 
             public Action OnUpdate;
 
-            private void Update() {
+            private void Update() 
+            {
                 if (OnUpdate != null) OnUpdate();
             }
 

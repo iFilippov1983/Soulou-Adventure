@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0077cb32e2381846985dbdb323ae47f, type: 3}
-  m_Name: EnemyData
+  m_Script: {fileID: 11500000, guid: 9e5e501b1e07be04998a85316707b632, type: 3}
+  m_Name: SceneData
   m_EditorClassIdentifier: 
-  _enemyPrefabPath: RollingMonster
-  _minSpawnTime: 1
-  _maxSpawnTime: 2
-  _amountOnLevel: 15
-  _spawnPoint: {x: -14, y: 10, z: 0}
+  _enemyPrefabsPath:
+  - RollingMonster
+  - Cannon
+  - CannonBall
+  _levelsDataPaths:
+  - Level_1_Data

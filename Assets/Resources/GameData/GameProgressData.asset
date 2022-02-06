@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04ea2c9904bab2d418a63aa358355230, type: 3}
   m_Name: GameProgressData
   m_EditorClassIdentifier: 
-  _lives: 3
-  _scores: 0
   _currentLevel: 1
+  _scoresOnStart: 100
+  _scoresForCompleteLevel: 100
+  _penaltyScores: 10

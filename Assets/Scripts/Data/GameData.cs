@@ -9,11 +9,11 @@ namespace Soulou
     public class GameData : ScriptableObject
     {
         [SerializeField] private string _playerDataPath;
-        [SerializeField] private string _enemyDataPath;
+        [SerializeField] private string _sceneDataPath;
         [SerializeField] private string _gameProgressDataPath;
 
         private PlayerData _playerData;
-        private EnemyData _enemyData;
+        private SceneData _sceneData;
         private GameProgressData _gameProgressData;
 
         public PlayerData PlayerData
@@ -26,13 +26,13 @@ namespace Soulou
             }
         }
 
-        public EnemyData EnemyData
+        public SceneData SceneData
         {
             get
             {
-                if (_enemyData == null) _enemyData = LoadPath<EnemyData>
-                         (string.Concat(PathString.GameDataFolderPath, _enemyDataPath));
-                return _enemyData;
+                if (_sceneData == null) _sceneData = LoadPath<SceneData>
+                         (string.Concat(PathString.GameDataFolderPath, _sceneDataPath));
+                return _sceneData;
             }
         }
 

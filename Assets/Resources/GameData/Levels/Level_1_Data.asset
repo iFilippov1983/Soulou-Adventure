@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace8ddcd9a7ba68488953f86a8359116, type: 3}
+  m_Name: Level_1_Data
+  m_EditorClassIdentifier: 
+  _LevelNumber: 1
+  _levelRefabPath: Level_1
+  _start: {x: 12, y: -7}
+  _finish: {x: 11.5, y: 8.5}
+  _cameraPosition: {x: 0, y: 0, z: -10}
+  _enemySpawnPoints:
+  - _loopSpawn: 1
+    _amount: 13
+    _pointXCoord: -14
+    _pointYCoord: 10
+    _enemyType: 0
+    _minSpawnTime: 1.2
+    _maxSpawnTime: 2
+  - _loopSpawn: 0
+    _amount: 1
+    _pointXCoord: -12.6
+    _pointYCoord: -6.6
+    _enemyType: 1
+    _minSpawnTime: 0
+    _maxSpawnTime: 0
