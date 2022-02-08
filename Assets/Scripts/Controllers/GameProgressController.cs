@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Soulou
@@ -12,12 +11,12 @@ namespace Soulou
         private PlayerData _playerData;
         private PlayerInitializer _playerInitializer;
         private int _scores;
-        private int _currentLevel;
         private int _scoresForCompleteLevel;
         private int _penaltyScores;
         private Text _scoresText;
 
-        public Action<int> ScoresChanged; 
+        public Action<int> ScoresChanged;
+        public Action<int> LevelChanged;
 
         public GameProgressController(GameData gameData, PlayerInitializer playerInitializer)
         {
@@ -36,6 +35,10 @@ namespace Soulou
             _scores += _scoresForCompleteLevel;
             _scoresText.text = string.Concat(SCORES, _scores);
             ScoresChanged?.Invoke(_scores);
+            
+            _progressData.CurrentLevel++;
+            LevelChanged?.Invoke(_progressData.CurrentLevel);
+
             Debug.Log("LEVEL COMPLETE!");
         }
 
@@ -52,7 +55,6 @@ namespace Soulou
             _scores = _progressData.ScoresOnStart;
             _scoresText.text = string.Concat(SCORES, _scores);
 
-            _currentLevel = _progressData.CurrentLevel;
             _penaltyScores = _progressData.PenaltyScores;
             ScoresChanged?.Invoke(_scores);
 
@@ -62,12 +64,6 @@ namespace Soulou
         private void LoadLevel()
         {
 
-        }
-
-        private void InitializeNewLevel()
-        {
-            _scores = _progressData.ScoresOnStart;
-            _currentLevel = _progressData.CurrentLevel;
         }
 
         private void GameOver()

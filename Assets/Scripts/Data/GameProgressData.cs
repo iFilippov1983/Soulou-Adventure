@@ -10,7 +10,7 @@ namespace Soulou
         [SerializeField] private int _scoresForCompleteLevel = 100;
         [SerializeField] private int _penaltyScores = 10;
 
-        public int CurrentLevel { get { return _currentLevel; } protected set { _currentLevel = value; } }
+        public int CurrentLevel { get { return _currentLevel; } set { _currentLevel = value; } }
         public int ScoresOnStart => _scoresOnStart;
         public int ScoresForCompleteLevel => _scoresForCompleteLevel;
         public int PenaltyScores => _penaltyScores;

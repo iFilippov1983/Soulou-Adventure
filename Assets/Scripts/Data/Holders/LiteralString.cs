@@ -14,6 +14,7 @@
         public const string Mask_Ladder = "Ladder";
         public const string Mask_Finish = "Finish";
         public const string Mask_Player = "Player";
+        public const string Mask_Enemy = "Enemy";
 
         //Objects
         public const string CannonBarrel = "Barrel";

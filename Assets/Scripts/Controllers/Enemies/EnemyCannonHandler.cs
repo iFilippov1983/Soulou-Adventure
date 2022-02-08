@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -6,6 +7,8 @@ namespace Soulou
 {
     public class EnemyCannonHandler : EnemyHandler
     {
+        private EnemyCannon _cannonView;
+        private BallShooter _shooter;
         private GameObject _cannonPrefab;
         private GameObject _ballPrefab;
         private GameObject _cannon;
@@ -14,10 +17,7 @@ namespace Soulou
         private float _shotDistance;
         private float _minAngle;
         private float _maxAngle;
-        private float _fireRate;
-
-        private bool _reloaded;
-        private Coroutine _reloadTimer;
+        private bool _playerInFOV;
 
         public EnemyCannonHandler
             (
@@ -35,17 +35,19 @@ namespace Soulou
             _cannon = Object.Instantiate(_cannonPrefab, _spawnPoint, Quaternion.identity);
             if (_spawnPoint.x > 0) _cannon.transform.eulerAngles = new Vector3(0f, 180f, 0f);
 
-            var cannonView = _cannon.GetComponent<EnemyCannon>();
-            _barrel = cannonView.Barrel;
-            _shotDistance = cannonView.ShotDistance;
-            _minAngle = cannonView.MinAimAngle;
-            _maxAngle = cannonView.MaxAimAngle;
-            _fireRate = cannonView.FireRate;
+            _cannonView = _cannon.GetComponent<EnemyCannon>();
+            _barrel = _cannonView.Barrel;
+            _shotDistance = _cannonView.ShotDistance;
+            _minAngle = _cannonView.MinAimAngle;
+            _maxAngle = _cannonView.MaxAimAngle;
+
+            _shooter = new BallShooter(_cannonView, MakeBallList());
         }
 
         public override void Execute()
         {
             Aim();
+            if (_playerInFOV) _shooter.Execute();
         }
 
         public override void Cleanup()
@@ -76,9 +78,23 @@ namespace Soulou
                 var axis = Vector3.Cross(Vector3.right, direction);
                 if (direction.magnitude < _shotDistance)
                 {
+                    _playerInFOV = true;
                     _barrel.rotation = Quaternion.AngleAxis(angle, axis);
                 }
+                else _playerInFOV = false;
             }
+        }
+
+        private List<EnemyCannonBall> MakeBallList()
+        {
+            var list = new List<EnemyCannonBall>();
+            for (int index = 0; index < _cannonView.AmmoAmount; index++)
+            {
+                var ballView = Object.Instantiate(_ballPrefab);
+                var view = ballView.GetComponent<EnemyCannonBall>();
+                list.Add(view);
+            }
+            return list;
         }
     }
 }

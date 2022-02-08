@@ -2,11 +2,10 @@ using UnityEngine;
 
 namespace Soulou
 {
-    [RequireComponent(typeof(TrailRenderer))]
     public class EnemyCannonBall : LevelObjectView 
     {
-        public TrailRenderer TrailRenderer => GetComponent<TrailRenderer>();
+        [SerializeField] private float _startSpeed = 5;
 
-
+        public float StartSpeed => _startSpeed;
     }
 }

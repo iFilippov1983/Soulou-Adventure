@@ -37,6 +37,7 @@ namespace Soulou
         public void SetCurrentLevel(int level)
         {
             _currentLevel = level;
+            Initialize();
         }
 
         public void SetTargetTransform(Transform playerTransform)

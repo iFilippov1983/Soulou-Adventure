@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4289444432068087460}
   - component: {fileID: -5755301238894615571}
   - component: {fileID: 4289444432068087467}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cannon
   m_TagString: DeadlyObject
   m_Icon: {fileID: 0}
@@ -48,6 +48,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe31f527d1a27247bd9bb48e0c8c2bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shotDistance: 15
+  _minAimAngle: 0
+  _maxAimAngle: 45
+  _fireRate: 2.5
+  _ammoAmount: 10
 --- !u!61 &4289444432068087467
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -58,7 +63,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.03448057, y: -0.01928997}
@@ -84,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4289444432186526473}
   - component: {fileID: 4289444432186526472}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4289444432472381227}
   - component: {fileID: 4289444432472381226}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: weelBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4289444432900099540}
   - component: {fileID: 4289444432900099547}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: weelFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4289444432994605335}
   - component: {fileID: 4289444432994605334}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: carriage
   m_TagString: Untagged
   m_Icon: {fileID: 0}

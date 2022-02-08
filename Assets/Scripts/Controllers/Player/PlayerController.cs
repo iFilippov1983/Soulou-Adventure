@@ -122,7 +122,8 @@ namespace Soulou
             for (int index = 0; index < amount; index++)
             {
                 _hitObject = _checkResults[index].gameObject;
-                if (_hitObject.layer.Equals(LayerMask.NameToLayer(LiteralString.Mask_Ground)))
+                if (_hitObject.layer.Equals(LayerMask.NameToLayer(LiteralString.Mask_Ground)) ||
+                    _hitObject.layer.Equals(LayerMask.NameToLayer(LiteralString.Mask_Enemy)))
                 {
                     _isGrounded = _hitObject.transform.position.y < (_playerRB.transform.position.y - _checkPointCorrection);
                     Physics2D.IgnoreCollision(_playerView.Collider2D, _checkResults[index], !_isGrounded);

@@ -1448,6 +1448,37 @@ namespace CustomUtilities
             return (Time.realtimeSinceStartup - startTime) * 1000f;
         }
 
+        public static Vector3 ChangeVectorCoord
+            (
+            this Vector3 origin, 
+            object x = null, 
+            object y = null, 
+            object z = null
+            )
+        {
+            return new Vector3
+                (
+                x == null ? origin.x : (float)x,
+                y == null ? origin.y : (float)y,
+                z == null ? origin.z : (float)z
+                );
+        }
+
+        public static Vector2 ChangeVectorCoord
+            (
+            this Vector2 origin,
+            object x = null,
+            object y = null,
+            object z = null
+            )
+        {
+            return new Vector2
+                (
+                x == null ? origin.x : (float)x,
+                y == null ? origin.y : (float)y
+                );
+        }
+
         public static List<Vector3> GetPositionListAround(Vector3 position, float distance, int positionCount) 
         {
             List<Vector3> ret = new List<Vector3>();
