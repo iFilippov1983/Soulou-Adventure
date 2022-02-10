@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - DeadlyObject
+  - Bridge
   layers:
   - Default
   - TransparentFX

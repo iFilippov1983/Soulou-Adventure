@@ -8,6 +8,7 @@ namespace Soulou
         private PlayerController _playerController;
         private GameProgressController _gameProgressController;
         private EnemiesController _enemiesController;
+        private SceneController _sceneController;
 
         public GameInitializer(ControllersDepo controllers, GameData gameData)
         {
@@ -17,7 +18,7 @@ namespace Soulou
             _playerInitializer = new PlayerInitializer(gameData);
             _gameProgressController = new GameProgressController(gameData, _playerInitializer);
             _playerController = new PlayerController(gameData, _playerInitializer.PlayerView, inputInitializer);
-            
+            _sceneController = new SceneController(gameData.SceneData);
 
             controllers.Add(inputController);
             controllers.Add(_gameProgressController);
@@ -31,6 +32,8 @@ namespace Soulou
             _playerController.OnFinishEnter += _gameProgressController.LevelComplete;
             _playerController.OnPlayerDeath += _gameProgressController.LevelFailed;
             _playerController.OnPlayerDeath += _playerInitializer.RespawnPlayer;
+
+            _gameProgressController.LevelChanged += _sceneController.ChangeLevel;
         }
 
         public void Cleanup()
@@ -39,6 +42,8 @@ namespace Soulou
             _playerController.OnFinishEnter -= _gameProgressController.LevelComplete;
             _playerController.OnPlayerDeath -= _gameProgressController.LevelFailed;
             _playerController.OnPlayerDeath -= _playerInitializer.RespawnPlayer;
+
+            _gameProgressController.LevelChanged += _sceneController.ChangeLevel;
         }
     }
 }

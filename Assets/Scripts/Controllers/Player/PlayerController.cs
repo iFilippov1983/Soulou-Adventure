@@ -122,11 +122,13 @@ namespace Soulou
             for (int index = 0; index < amount; index++)
             {
                 _hitObject = _checkResults[index].gameObject;
-                if (_hitObject.layer.Equals(LayerMask.NameToLayer(LiteralString.Mask_Ground)) ||
-                    _hitObject.layer.Equals(LayerMask.NameToLayer(LiteralString.Mask_Enemy)))
+                var isGround = _hitObject.layer.Equals(LayerMask.NameToLayer(LiteralString.Mask_Ground));
+                var isEnemy = _hitObject.layer.Equals(LayerMask.NameToLayer(LiteralString.Mask_Enemy));
+                var isBridge = _hitObject.gameObject.tag.Equals(LiteralString.Bridge);
+                if (isGround || isEnemy)
                 {
                     _isGrounded = _hitObject.transform.position.y < (_playerRB.transform.position.y - _checkPointCorrection);
-                    Physics2D.IgnoreCollision(_playerView.Collider2D, _checkResults[index], !_isGrounded);
+                    if(!isBridge) Physics2D.IgnoreCollision(_playerView.Collider2D, _checkResults[index], !_isGrounded);
                 }
                 else if (_hitObject.layer.Equals(LayerMask.NameToLayer(LiteralString.Mask_Ladder)))
                 {

@@ -7,6 +7,7 @@
         public const string Player = "Player";
         public const string DeadlyObject = "DeadlyObject";
         public const string Finish = "Finish";
+        public const string Bridge = "Bridge";
 
         //Layers masks
         public const string Mask_Default = "Default";

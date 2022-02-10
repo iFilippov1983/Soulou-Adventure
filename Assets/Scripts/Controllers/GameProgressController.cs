@@ -39,7 +39,7 @@ namespace Soulou
             _progressData.CurrentLevel++;
             LevelChanged?.Invoke(_progressData.CurrentLevel);
 
-            Debug.Log("LEVEL COMPLETE!");
+            Debug.Log($"LEVEL COMPLETE! Current level: {_progressData.CurrentLevel}");
         }
 
         public void LevelFailed()
@@ -52,6 +52,7 @@ namespace Soulou
 
         private void NewGame()
         {
+            _progressData.CurrentLevel = 1;
             _scores = _progressData.ScoresOnStart;
             _scoresText.text = string.Concat(SCORES, _scores);
 
@@ -63,7 +64,7 @@ namespace Soulou
 
         private void LoadLevel()
         {
-
+            
         }
 
         private void GameOver()

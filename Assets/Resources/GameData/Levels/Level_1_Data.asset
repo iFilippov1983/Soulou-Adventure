@@ -20,8 +20,8 @@ MonoBehaviour:
   _enemySpawnPoints:
   - _loopSpawn: 1
     _amount: 11
-    _pointXCoord: -14
-    _pointYCoord: 10
+    _pointXCoord: -17
+    _pointYCoord: 12
     _enemyType: 0
     _minSpawnTime: 2
     _maxSpawnTime: 3

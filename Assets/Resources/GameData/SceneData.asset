@@ -18,3 +18,4 @@ MonoBehaviour:
   - CannonBall
   _levelsDataPaths:
   - Level_1_Data
+  - Level_2_Data
