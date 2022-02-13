@@ -8,6 +8,7 @@ namespace Soulou
     {
         private const string SCORES = "Scores: ";
         private GameProgressData _progressData;
+        private SceneData _sceneData;
         private PlayerData _playerData;
         private PlayerInitializer _playerInitializer;
         private int _scores;
@@ -20,7 +21,9 @@ namespace Soulou
 
         public GameProgressController(GameData gameData, PlayerInitializer playerInitializer)
         {
+            _sceneData = gameData.SceneData;
             _progressData = gameData.GameProgressData;
+            _scoresForCompleteLevel = _progressData.ScoresForCompleteLevel;
             _playerInitializer = playerInitializer;
         }
 
@@ -39,7 +42,8 @@ namespace Soulou
             _progressData.CurrentLevel++;
             LevelChanged?.Invoke(_progressData.CurrentLevel);
 
-            Debug.Log($"LEVEL COMPLETE! Current level: {_progressData.CurrentLevel}");
+            var playerStartPosition = _sceneData.LevelsData[_progressData.CurrentLevel - 1].PlayerStart;
+            _playerInitializer.SetNewStartPosition(playerStartPosition);
         }
 
         public void LevelFailed()
@@ -63,8 +67,8 @@ namespace Soulou
         }
 
         private void LoadLevel()
-        {
-            
+        { 
+        
         }
 
         private void GameOver()

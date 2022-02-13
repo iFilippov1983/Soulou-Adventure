@@ -39,5 +39,14 @@ namespace Soulou
             }
             _balls.ForEach(b => b.Execute());
         }
+
+        public void Cleanup()
+        {
+            foreach (var ballHandler in _balls)
+            {
+                ballHandler.Cleanup();
+            }
+            _balls.Clear();
+        }
     }
 }

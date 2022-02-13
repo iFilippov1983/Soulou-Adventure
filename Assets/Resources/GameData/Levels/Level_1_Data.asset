@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _LevelNumber: 1
   _levelRefabPath: Level_1
-  _start: {x: 12, y: -7}
-  _finish: {x: 11.5, y: 8.5}
+  _playerStart: {x: 12, y: -7}
+  _playerFinish: {x: 11.55, y: 8}
   _cameraPosition: {x: 0, y: 0, z: -10}
   _enemySpawnPoints:
   - _loopSpawn: 1

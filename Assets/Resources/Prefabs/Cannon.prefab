@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4289444432068087461}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.64, y: -6.68, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4289444432900099540}
@@ -49,9 +49,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shotDistance: 15
-  _minAimAngle: 0
+  _minAimAngle: 1
   _maxAimAngle: 45
-  _fireRate: 2.5
+  _fireRate: 4
   _ammoAmount: 10
 --- !u!61 &4289444432068087467
 BoxCollider2D:

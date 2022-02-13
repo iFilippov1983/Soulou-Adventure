@@ -8,7 +8,7 @@ namespace Soulou
     {
         [SerializeField] private string[] _enemyPrefabsPath;
 
-        private List<LevelObjectView> _enemies;
+        private List<LevelObjectView> _enemies = new List<LevelObjectView>();
         public List<LevelObjectView> Enemies => LoadEnemies();
         private List<LevelObjectView> LoadEnemies()
         {

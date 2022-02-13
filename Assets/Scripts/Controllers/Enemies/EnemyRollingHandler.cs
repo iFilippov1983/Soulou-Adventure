@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
@@ -54,6 +55,8 @@ namespace Soulou
 
             _enemyListActive.Clear();
             _enemyStackPassive.Clear();
+
+            Debug.Log($"Stack: {_enemyStackPassive.Count}; list: {_enemyListActive.Count};");
         }
 
         public override T GetSelf<T>()

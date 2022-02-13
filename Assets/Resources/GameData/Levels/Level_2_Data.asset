@@ -12,9 +12,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ace8ddcd9a7ba68488953f86a8359116, type: 3}
   m_Name: Level_2_Data
   m_EditorClassIdentifier: 
-  _LevelNumber: 0
-  _levelRefabPath: 
-  _start: {x: 0, y: 0}
-  _finish: {x: 0, y: 0}
+  _LevelNumber: 2
+  _levelRefabPath: Level_2
+  _playerStart: {x: 12.5, y: -6.3}
+  _playerFinish: {x: -12, y: 8.2}
   _cameraPosition: {x: 0, y: 16, z: -10}
-  _enemySpawnPoints: []
+  _enemySpawnPoints:
+  - _loopSpawn: 0
+    _amount: 1
+    _pointXCoord: -0.1
+    _pointYCoord: 12.7
+    _enemyType: 1
+    _minSpawnTime: 0
+    _maxSpawnTime: 0
+  - _loopSpawn: 0
+    _amount: 1
+    _pointXCoord: -1.2
+    _pointYCoord: 9.8
+    _enemyType: 1
+    _minSpawnTime: 0
+    _maxSpawnTime: 0
+  - _loopSpawn: 0
+    _amount: 1
+    _pointXCoord: 13
+    _pointYCoord: 20.7
+    _enemyType: 1
+    _minSpawnTime: 0
+    _maxSpawnTime: 0
+  - _loopSpawn: 0
+    _amount: 1
+    _pointXCoord: 1.9
+    _pointYCoord: 20.5
+    _enemyType: 1
+    _minSpawnTime: 0
+    _maxSpawnTime: 0
+  - _loopSpawn: 0
+    _amount: 1
+    _pointXCoord: 0.5
+    _pointYCoord: 22.6
+    _enemyType: 1
+    _minSpawnTime: 0
+    _maxSpawnTime: 0

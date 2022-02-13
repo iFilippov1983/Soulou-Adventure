@@ -1,4 +1,3 @@
-using CustomUtilities;
 using UnityEngine;
 
 namespace Soulou
@@ -26,9 +25,15 @@ namespace Soulou
         public void Throw(Transform transform, Vector3 velocity)
         {
             _ballView.gameObject.SetActive(true);
+            _ballView.Rigidbody2D.velocity = Vector2.zero;
             _ballView.Transform.position = transform.position;
             _ballView.Transform.rotation = transform.rotation;
             _ballView.Rigidbody2D.AddForce(velocity, ForceMode2D.Impulse);
+        }
+
+        public void Cleanup()
+        {
+            if(_ballView) Object.Destroy(_ballView.gameObject);
         }
 
         private void CheckCollision()

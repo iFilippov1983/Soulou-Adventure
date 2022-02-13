@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace Soulou
 {
@@ -33,14 +31,16 @@ namespace Soulou
         public override void Initialize()
         {
             _cannon = Object.Instantiate(_cannonPrefab, _spawnPoint, Quaternion.identity);
-            if (_spawnPoint.x > 0) _cannon.transform.eulerAngles = new Vector3(0f, 180f, 0f);
-
             _cannonView = _cannon.GetComponent<EnemyCannon>();
             _barrel = _cannonView.Barrel;
             _shotDistance = _cannonView.ShotDistance;
             _minAngle = _cannonView.MinAimAngle;
             _maxAngle = _cannonView.MaxAimAngle;
 
+            if (_spawnPoint.x > 0)
+            {
+                _cannon.transform.eulerAngles = new Vector3(0f, 180f, 0f);
+            }
             _shooter = new BallShooter(_cannonView, MakeBallList());
         }
 
@@ -52,7 +52,8 @@ namespace Soulou
 
         public override void Cleanup()
         {
-            
+            _shooter.Cleanup();
+            Object.Destroy(_cannon);
         }
 
         public void SetAimTransform(Transform aimTransform)
@@ -70,16 +71,25 @@ namespace Soulou
             if (_aimTransform)
             {
                 var direction = _aimTransform.position - _barrel.position;
-                var angle = Vector3.Angle(Vector3.right, direction);
+                if (direction.y < 0) direction.y = 0;
+                if (direction.x < 0) direction.x = 0;
 
-                if (angle < _minAngle) angle = _minAngle;
-                else if (angle > _maxAngle) angle = _maxAngle;
-
-                var axis = Vector3.Cross(Vector3.right, direction);
                 if (direction.magnitude < _shotDistance)
                 {
                     _playerInFOV = true;
-                    _barrel.rotation = Quaternion.AngleAxis(angle, axis);
+                    if (_cannon.transform.position.x < 0)
+                    {
+                        var angle = Vector3.Angle(_cannon.transform.right, direction);
+                        var axis = Vector3.Cross(_cannon.transform.right, direction);
+                        _barrel.rotation = Quaternion.AngleAxis(angle, axis);
+                    }
+                    else 
+                    {
+                        var angle = Vector3.Angle(-_cannon.transform.right, direction);
+                        var axis = Vector3.Cross(-_cannon.transform.right, direction);
+                        _barrel.rotation = Quaternion.AngleAxis(angle, axis);
+                    }
+                    
                 }
                 else _playerInFOV = false;
             }

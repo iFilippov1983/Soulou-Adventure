@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Soulou
@@ -36,6 +37,7 @@ namespace Soulou
 
         public void SetCurrentLevel(int level)
         {
+            CleanupControllers();
             _currentLevel = level;
             Initialize();
         }
@@ -44,7 +46,8 @@ namespace Soulou
         {
             foreach (EnemyHandler eh in _eHandlers)
             {
-                if (eh is EnemyCannonHandler) eh.GetSelf<EnemyCannonHandler>().SetAimTransform(playerTransform);
+                if (eh is EnemyCannonHandler) 
+                    eh.GetSelf<EnemyCannonHandler>().SetAimTransform(playerTransform);
             }
         }
 
@@ -70,6 +73,7 @@ namespace Soulou
             {
                 eh.Cleanup();
             }
+            _eHandlers.Clear();
         }
     }
 }

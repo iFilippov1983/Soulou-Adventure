@@ -16,6 +16,7 @@
         public const string Mask_Finish = "Finish";
         public const string Mask_Player = "Player";
         public const string Mask_Enemy = "Enemy";
+        public const string Mask_IgnoreEnemies = "IgnoreEnemies";
 
         //Objects
         public const string CannonBarrel = "Barrel";
